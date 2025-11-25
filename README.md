@@ -17,7 +17,7 @@ Users can:
 
 ---
 
-## Getting Started
+
 
 ### 1. Backend (server)
 
@@ -29,7 +29,7 @@ npm run dev
 
 The server listens on port `5000` by default.
 
-You can configure environment variables in `.env` (see `.env.example`).
+
 
 ### 2. Frontend (client)
 
@@ -41,7 +41,7 @@ npm install
 npm run dev
 ```
 
-Vite will start a dev server (usually on `http://localhost:5173`).
+
 
 ### 3. Connect frontend to backend
 
