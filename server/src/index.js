@@ -32,6 +32,16 @@ io.on("connection", (socket) => {
 
   socket.on("join_room", ({ username, room }) => {
     if (!username || !room) return;
+
+    // If the user was already in another room, leave it first
+    const previous = usersBySocket.get(socket.id);
+    if (previous && previous.room !== room) {
+      socket.leave(previous.room);
+      socket.to(previous.room).emit("user_left", { username: previous.username });
+      usersBySocket.delete(socket.id);
+      sendRoomUsers(previous.room);
+    }
+
     socket.join(room);
     usersBySocket.set(socket.id, { username, room });
 
